@@ -1,5 +1,7 @@
 # 鳴潮 Mac：將遊戲內追加資源放到外接 SSD
 
+繁體中文 | [English](README_en.md)
+
 > 單機實測紀錄與可還原操作指南，不是官方支援方案。
 
 **本體裝到外接還不夠：這次透過「獨立測試副本重新簽章 + 將該副本的 Saved 資料夾連到外接 SSD」，成功下載追加資源，使用者也回報可以實際遊玩。沒有關閉 SIP。**
@@ -16,13 +18,13 @@
 
 ## 實測環境
 
-| 項目 | 環境 |
-| --- | --- |
-| 系統 | macOS 27.0.1 |
-| 遊戲 | Mac App Store《鳴潮》3.7.0 |
-| 執行檔架構 | arm64 |
-| 外接磁碟 | APFS SSD |
-| 遊戲安裝位置 | 外接 SSD |
+| 項目         | 環境                       |
+| ------------ | -------------------------- |
+| 系統         | macOS 27.0.1               |
+| 遊戲         | Mac App Store《鳴潮》3.7.0 |
+| 執行檔架構   | arm64                      |
+| 外接磁碟     | APFS SSD                   |
+| 遊戲安裝位置 | 外接 SSD                   |
 
 ## 為什麼 App Store 的外接安裝設定不夠？
 
@@ -36,13 +38,6 @@ App Store 可以把大型 App 本體安裝到外接磁碟，但遊戲自己下�
 | 本次重新簽章副本 | `~/Library/Client/Saved`                                                            |
 
 **必須確認你自己的實際路徑。**`Client` 名稱很普通，其他 Unreal Engine 遊戲也可能使用；若不是此次副本新建或無法確定歸屬，先停下，不能照抄搬走。
-
-### 本次失敗、已還原的做法
-
-1. 只將原版 `Resources` 連到外接：出現「獲取補丁清單資訊失敗」。還原後可通過補丁檢查，但提示空間不足。未取得足以斷言根因的沙盒拒絕日誌。
-2. 將整個原版 container 連到外接：遊戲無法啟動，`containermanagerd` 回報 metadata 權限錯誤。還原後恢復啟動。
-
-成功的測試**沒有沿用上述原版容器修改**。
 
 ## 操作前準備
 
@@ -60,8 +55,9 @@ App Store 可以把大型 App 本體安裝到外接磁碟，但遊戲自己下�
 需要 macOS、Python 3，以及系統的 `diskutil`、`cp`、`ditto`、`codesign`、`pgrep`、`ps`、`open`、`lsof`。不自動安裝、不使用 sudo。沒有一鍵全部執行、更新或刪除命令。
 
 ```text
-wutheringwaves-ssd/
+wutheringwaves-external-ssd/
 ├── README.md
+├── README.en.md
 ├── config.env.example
 ├── scripts/
 │   ├── common.sh
@@ -80,7 +76,7 @@ wutheringwaves-ssd/
 
 ## 1. 設定自己的路徑
 
-在 Terminal 切到**這個資料夾**（例如 `cd "$HOME/Documents/wutheringwaves-ssd"`），複製範本，編輯 `config.env` 後保存：
+在 Terminal 切到**這個資料夾**（例如 `cd "$HOME/Documents/wutheringwaves-external-ssd"`），複製範本，編輯 `config.env` 後保存：
 
 ```bash
 cp -n config.env.example config.env
