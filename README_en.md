@@ -2,8 +2,6 @@
 
 [繁體中文](README.md) | English
 
-> A single-machine test report and reversible setup guide—not an officially supported solution.
-
 **Installing the app on an external drive is not enough. In this test, re-signing a separate test copy and linking its Saved directory to an external SSD allowed additional resources to download externally. The user also reported being able to play. SIP was not disabled.**
 
 ## Read the Risks First
@@ -18,13 +16,13 @@
 
 ## Tested Environment
 
-| Item | Environment |
-| --- | --- |
-| Operating system | macOS 27.0.1 |
-| Game | Wuthering Waves 3.7.0, Mac App Store edition |
-| Executable architecture | arm64 |
-| External drive | APFS SSD |
-| App installation location | External SSD |
+| Item                      | Environment                                  |
+| ------------------------- | -------------------------------------------- |
+| Operating system          | macOS 27.0.1                                 |
+| Game                      | Wuthering Waves 3.7.0, Mac App Store edition |
+| Executable architecture   | arm64                                        |
+| External drive            | APFS SSD                                     |
+| App installation location | External SSD                                 |
 
 ## Why the App Store's External Installation Setting Is Not Enough
 
@@ -32,10 +30,10 @@ The App Store can install large apps on an external drive, but resources downloa
 
 Paths observed in this test:
 
-| Version | Data location |
-| --- | --- |
+| Version                | Data location                                                                       |
+| ---------------------- | ----------------------------------------------------------------------------------- |
 | Original sandboxed app | `~/Library/Containers/com.kurogame.wutheringwaves.global/Data/Library/Client/Saved` |
-| Re-signed test copy | `~/Library/Client/Saved` |
+| Re-signed test copy    | `~/Library/Client/Saved`                                                            |
 
 **Verify the actual path on your own machine.** `Client` is a generic name that other Unreal Engine games may also use. If you cannot confirm that the directory belongs to this test copy, stop—do not move it blindly.
 
